@@ -1,0 +1,110 @@
+:root {
+  --variantColor: #03dac6;
+  --primaryColor: #018786;
+}
+
+body {
+  background-color: #121212;
+}
+
+.list-group {
+  border-radius: 50%;
+  width: 70%;
+  align-self: center;
+}
+
+.list-group-item {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+.authorWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 170px;
+  color: white;
+}
+
+.authorWrapper > h1 {
+  font-weight: 600;
+  font-size: small;
+}
+
+.authorWrapper > h2 {
+  font-weight: 400;
+  font-size: smaller;
+  width: 65px;
+}
+
+.audio-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.audio-controls .play svg,
+.audio-controls .pause svg {
+  height: 50px;
+  width: 50px;
+  padding: 2.5px;
+}
+
+.audio-controls .trash svg {
+  height: 20px;
+  width: 20px;
+}
+
+.audio-controls path {
+  fill: var(--variantColor);
+}
+
+.btn-outline-secondary {
+  width: 50px;
+  height: 50px;
+}
+
+.btn-outline-primary.active {
+  color: white;
+  border: 1px solid var(--primaryColor);
+  background-color: var(--primaryColor);
+}
+
+.btn-outline-primary {
+  color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}
+
+.btn-outline-success,
+.btn-outline-secondary {
+  border: none;
+  border-radius: 100%;
+}
+
+.btn-outline-success:focus {
+  box-shadow: 0px 0px 0px 2px var(--primaryColor);
+}
+
+.btn-outline-success:hover {
+  background-color: #121212;
+}
+
+.play:hover path,
+.trash:hover path {
+  fill: white;
+}
+
+.svg {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.svg-circle-bg {
+  fill: none;
+}
+
+.svg-circle {
+  fill: none;
+}
