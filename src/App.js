@@ -31,6 +31,7 @@ const trackJSON = [
 ];
 
 function App() {
+  //States
   const [trackArray, setTrackArray] = useState([]);
   const [playStopAll, setPlayStopAll] = useState(false);
   const [sync, setSync] = useState(false);

@@ -21,7 +21,7 @@ export default function TrackBox(props) {
 
   // Destructure
   const { track, playStopAll, leaderTrack, sync } = props; // non function props
-  const { addDuration, removeTrack, setLead } = props; // function props
+  const { addDuration, removeTrack, setLead } = props; // functional props
   const { duration } = audioRef.current;
   const { bpm, owner, uid } = track;
 
@@ -68,17 +68,16 @@ export default function TrackBox(props) {
   };
 
   //Use effects
-
   // Initial Mount
   useEffect(() => {
     audioFile.onloadeddata = () => {
       startTimer();
       calcMeasures();
       setTrackProgress(audioRef.current.currentTime);
+      addDuration(audioFile.duration, uid);
       if (leaderTrack.duration <= audioFile.duration) {
         setLead({ duration: audioFile.duration, bpm, uid, leadTime: 0 });
       }
-      addDuration(audioFile.duration, uid);
     };
     setIsMounted(true);
     return () => {
@@ -94,18 +93,12 @@ export default function TrackBox(props) {
     } else {
       audioRef.current.loop = true;
     }
-    if (sync) {
-      audioRef.current.currentTime = leaderTrack.leadTime;
-    }
-    if (!isPlaying) {
-    }
   }, [isPlaying]);
 
   // Handle playStopAll button toggle
   useEffect(() => {
     if (playStopAll) {
       setisPlaying(true);
-      audioRef.current.currentTime = 0;
       audioRef.current.loop = true;
       audioRef.current.play();
     } else {
@@ -169,14 +162,17 @@ export default function TrackBox(props) {
           )}
           <div className="authorWrapper">
             <h1>Author: {owner}</h1>
-
-            <OverlayTrigger
-              placement="auto-start"
-              delay={{ show: 250, hide: 400 }}
-              overlay={<Tooltip>{`Original BPM ${bpm}`}</Tooltip>}
-            >
-              <h2>BPM: {sync ? leaderTrack.bpm : bpm}</h2>
-            </OverlayTrigger>
+            {sync ? (
+              <OverlayTrigger
+                placement="auto-start"
+                delay={{ show: 250, hide: 400 }}
+                overlay={<Tooltip>{`Original BPM ${bpm}`}</Tooltip>}
+              >
+                <h2>BPM: {leaderTrack.bpm}</h2>
+              </OverlayTrigger>
+            ) : (
+              <h2>BPM: {bpm}</h2>
+            )}
           </div>
 
           <div className="d-flex flex-column">

@@ -101,10 +101,6 @@ body {
   overflow: visible;
 }
 
-.svg-circle-bg {
-  fill: none;
-}
-
-.svg-circle {
-  fill: none;
+.listGroupWrapper{
+  padding: 0;
 }

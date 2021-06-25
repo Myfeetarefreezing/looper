@@ -1,18 +1,12 @@
-import { useState } from "react";
-import {
-  Button,
-  DropdownButton,
-  Dropdown,
-  ButtonGroup,
-  Alert,
-} from "react-bootstrap";
+import { Button, DropdownButton, Dropdown, ButtonGroup, Alert} from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 import AnimateHeight from "react-animate-height";
 
 export default function ButtonBar(props) {
   //Destructure props
-  const { tracks, addTrack, setPlayStopAll, playStopAll, setSync, sync } =
-    props;
+  const { tracks, playStopAll, sync } = props; // non function props
+  const { addTrack, setPlayStopAll, setSync } = props; //functional props
 
   //State
   const [dropTitle, setDropTitle] = useState("Select Track");
